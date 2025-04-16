@@ -1,0 +1,54 @@
+// создание таблицы
+
+CREATE TABLE TestTable(
+	ID serial PRIMARY_KEY,
+	key_ID INTEGER,
+	age INTEGER CHECK (age >= 18),
+	char VARCHAR(256) UNIQUE, // только уникальные значения
+	bool BOOLEAN NOT NULL,
+	float REAL,
+	byte  BYTEA,
+	datetime date,
+
+FOREIGN KEY (key_ID) REFERENCES foreign_table(foreign_ID)
+);
+
+
+
+SELECT * FROM employees
+INNER JOIN departments ON employees.department_id = departments.department_id;
+
+Этот запрос извлечет записи из таблиц сотрудников и отделов, в которых есть совпадение по столбцу department_id.
+
+SELECT * FROM employees
+LEFT JOIN departments ON employees.department_id = departments.department_id;
+
+Этот запрос извлечет все записи из таблицы сотрудников и только соответствующие записи из таблицы отделов.
+
+SELECT * FROM employees
+RIGHT JOIN departments ON employees.department_id = departments.department_id;
+
+This query will retrieve all records from the departments table and only the matching records from the employees table.
+Этот запрос извлечет все записи из таблицы отделов и только соответствующие записи из таблицы сотрудников.
+
+
+SELECT 
+    ID,
+    Username,
+    TimeCreate,
+    TimeExpire,
+    CASE 
+        WHEN TimeExpire < CURRENT_TIMESTAMP THEN TRUE
+        ELSE FALSE
+    END AS "Is Expire"
+FROM 
+    Users;
+	
+	SELECT 
+    ID,
+    Username,
+    TimeCreate,
+    TimeExpire,
+    (TimeExpire < CURRENT_TIMESTAMP) AS "Is Expire"
+FROM 
+    Users;
