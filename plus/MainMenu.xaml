@@ -1,0 +1,93 @@
+﻿<Window x:Class="GroceryApp.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GroceryApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10,10,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Name="StoreTabGrid" Margin="0,0,0,10">
+            <ListView Name="ItemListView" HorizontalContentAlignment="Center" VerticalContentAlignment="Top">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="White" Width="200" Height="300" Margin="10,10,10,10" Padding="10,10,10,10" BorderBrush="Gray" BorderThickness="1" CornerRadius="20">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Image Grid.Row="0" Source="{Binding Image}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Name}" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Button Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+        Width="50" Height="50" Background="LimeGreen" BorderBrush="Transparent" 
+        Click="Button_Click">
+                                    <Path Data="M15,15 L35,15 M25,5 L25,25" 
+          Stroke="White" 
+          StrokeThickness="3" 
+          Stretch="Uniform" 
+          HorizontalAlignment="Center" 
+          VerticalAlignment="Center"/>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid Grid.Row="0" Name="ExploreTabGrid" Margin="0,0,0,10">
+            
+        </Grid>
+
+        <Grid Grid.Row="0" Name="CartTabGrid" Margin="0,0,0,10">
+
+        </Grid>
+
+        <Grid Grid.Row="0" Name="FavoriteTabGrid" Margin="0,0,0,10">
+
+        </Grid>
+
+        <Grid Grid.Row="0" Name="AccountTabGrid" Margin="0,0,0,10">
+            <TextBlock Name="AccountTabAccountName" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="72" FontWeight="ExtraBold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Name="StoreTabBtn" Click="StoreTabBtn_Click" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Materials/IconStore.png"/>
+            </Button>
+            <Button Grid.Column="1" Name="ExploreTabBtn" Click="ExploreTabBtn_Click" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Materials/IconExplore.png"/>
+            </Button>
+            <Button Grid.Column="2" Name="CartTabBtn" Click="CartTabBtn_Click" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Materials/IconCart.png"/>
+            </Button>
+            <Button Grid.Column="3" Name="FavoriteTabBtn" Click="FavoriteTabBtn_Click" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Materials/IconFavourite.png"/>
+            </Button>
+            <Button Grid.Column="4" Name="AccountTabBtn" Click="AccountTabBtn_Click" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent">
+                <Image Source="/Materials/IconAccount.png"/>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>
